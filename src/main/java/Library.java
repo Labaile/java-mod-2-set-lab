@@ -1,6 +1,7 @@
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 public class Library {
@@ -19,8 +20,7 @@ public class Library {
         
     }
 
-    //create a set that contains a list of each genre that you have a book for
-    Set<String> uniqueBookGenre = new HashSet<String>();
+
 
     public HashMap<String, Book> getLibrary() {
         return library;
@@ -32,16 +32,20 @@ public class Library {
     }
 
 
-    public Set<String> getUniqueBookGenre(Book bookFromUser) {
-        return uniqueBookGenre;
+    Set<String> bookGenres = new HashSet<String>();
+
+    public boolean addGenre(String genre) {
+        if (!bookGenres.contains(genre.toLowerCase())) {
+            bookGenres.add(genre.toLowerCase());
+            return true;
+        } else {
+            return false;
+        }
     }
 
-
-    public void setUniqueBookGenre(Set<String> uniqueBookGenre) {
-        this.uniqueBookGenre = uniqueBookGenre;
+    public boolean containsGenre(String genre) {
+        return bookGenres.contains(genre.toLowerCase());
     }
-
-    
     
     }//close Library class
 
